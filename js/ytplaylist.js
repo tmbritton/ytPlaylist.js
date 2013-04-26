@@ -70,8 +70,11 @@
           $(selector).append('<ul></ul>');
         }
         //var listItem = '<li><a href="' + vidinfo.url + '" rel=\'{"h":' + vidinfo.height+ ', "w":' + vidinfo.width + '}\'>' + vidinfo.title + '</a></li>';
-        var listItem = '<li><a href="' + vidinfo.url + '" rel=\'{"h":' + vidinfo.height+ ', "w":' + vidinfo.width + '}\'><img src="' + vidinfo.thumbnail + '" alt="' + vidinfo.title +'" title="' + vidinfo.title +'" /></li>'
+        var listItem = '<li><a href="' + vidinfo.url + '" rel=\'{"h":' + vidinfo.height+ ', "w":' + vidinfo.width + '}\'><img src="' + vidinfo.thumbnail + '" alt="' + vidinfo.title +'" title="' + vidinfo.title +'" /></li>'; 
         $(selector).children('ul').append(listItem);
+        if(index === 0) {
+          $(selector).find('img').addClass('active');
+        }          
       });
     };
 
@@ -112,8 +115,8 @@
 
     var onClickCallback = function(element, selector) {
       var vidinfo = []
-      $(selector).find('a').removeClass('active');
-      $(element).addClass('active');
+      $(selector).find('img').removeClass('active');
+      $(element).children('img').addClass('active');
       vidinfo.url = $(element).attr('href');
       var dimensions = $.parseJSON($(element).attr('rel'));
       vidinfo.height = dimensions.h;

@@ -1,0 +1,53 @@
+body {
+	background: #eee;
+	color: #333;
+	font-family: "Lucida Grande", sans-serif;
+}
+
+#playlist {
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+
+#playlist h2 {
+	margin: 0;
+}
+
+#playlist ul {
+	margin: 5px 0 0 0;
+	padding: 0;
+	overflow: auto;
+}
+
+#playlist li {
+	list-style-type: none;
+	width: 97px;
+	float:left;
+	margin: 10px 10px 0 0;
+}
+
+#playlist li:last-child {
+	margin-right:0;
+}
+
+#playlist img {
+	max-width: 97px;
+	height: auto;
+	opacity: .5;
+	-webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#playlist img.active {
+	border:2px solid #e97a38;
+	position: relative;
+	top: -2px;
+	left: -2px;
+	opacity: 1;
+}
+
+#playlist a:hover img {
+	opacity: 1;
+}
