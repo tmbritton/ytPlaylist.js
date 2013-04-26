@@ -57,17 +57,20 @@
     */
     var parseList = function(json, selector) {
       var list = json.feed.entry;
+      console.log(list);
       $(list).each(function( index ) {
         var vidinfo = [];
         vidinfo.url = $(this)[0].link[0].href;
         vidinfo.height = $(this)[0].media$group.media$thumbnail[0].height;
         vidinfo.width = $(this)[0].media$group.media$thumbnail[0].width;
         vidinfo.title = $(this)[0].title.$t;
+        vidinfo.thumbnail = $(this)[0].media$group.media$thumbnail[2].url;
         if(index === 0) {
           embedIframe(vidinfo, selector);
           $(selector).append('<ul></ul>');
         }
-        var listItem = '<li><a href="' + vidinfo.url + '" rel=\'{"h":' + vidinfo.height+ ', "w":' + vidinfo.width + '}\'>' + vidinfo.title + '</a></li>';
+        //var listItem = '<li><a href="' + vidinfo.url + '" rel=\'{"h":' + vidinfo.height+ ', "w":' + vidinfo.width + '}\'>' + vidinfo.title + '</a></li>';
+        var listItem = '<li><a href="' + vidinfo.url + '" rel=\'{"h":' + vidinfo.height+ ', "w":' + vidinfo.width + '}\'><img src="' + vidinfo.thumbnail + '" alt="' + vidinfo.title +'" title="' + vidinfo.title +'" /></li>'
         $(selector).children('ul').append(listItem);
       });
     };
@@ -96,7 +99,7 @@
         var height = Math.round(vidinfo.height * difference);
       }
       var iframe = '<iframe width="' + width + '" height="' + height + '" src="http://www.youtube.com/embed/' + vid + '" frameborder="0" allowfullscreen></iframe>';
-      $(selector).prepend(iframe);
+      $(iframe).insertAfter($(selector).find('h2'));
     };
     
     var addListeners = function(selector) {
