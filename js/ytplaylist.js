@@ -1,12 +1,22 @@
 (function( $, undefined ) {
   $.fn.ytPlaylist = function(options) {
     
+    // Settings object
   	var settings = $.extend( {
   		'playlist' : 'PLDFmQ1Ea1sUXBNTLloUE6T0iSs5Xt97Ig',
   	}, options);
 
-  	var request = 'https://gdata.youtube.com/feeds/api/playlists/' + settings.playlist + '?alt=json'
-    
+    // URL for Youtube Playlist API call
+   	var request = 'https://gdata.youtube.com/feeds/api/playlists/' + settings.playlist + '?alt=json'
+
+    /**
+    *  Get the JSON, kick off the program with the success callback.
+    *  
+    *  @param string request
+    *    YouTube API URL that gives us the JSON response.
+    *  @param string selector
+    *    Element in which to create playlist.  
+    */    
     var getJSON = function(request, selector) {
     	$.ajax({
   			url: request,
@@ -105,6 +115,12 @@
       $(iframe).insertAfter($(selector).find('h2'));
     };
     
+    /**
+    *  Add listeners for user interaction
+    *   
+    *  @param string selector
+    *    Element in which we embedded iframe.  
+    */
     var addListeners = function(selector) {
       $(selector).find('a').bind('click', function(){
         onClickCallback($(this), selector);
@@ -112,6 +128,15 @@
       });
     }
 
+    /**
+    *  Add listeners for user interaction
+    *   
+    *  @param object element
+    *    jQuery object of <a> element that was clicked. 
+    *
+    *  @param string selector
+    *    Element in which we embedded iframe.  
+    */
     var onClickCallback = function(element, selector) {
       var vidinfo = []
       $(selector).find('img').removeClass('active');
