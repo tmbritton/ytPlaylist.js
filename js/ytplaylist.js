@@ -107,7 +107,6 @@
     
     var addListeners = function(selector) {
       $(selector).find('a').bind('click', function(){
-        event.preventDefault();
         onClickCallback($(this), selector);
         return false;
       });
