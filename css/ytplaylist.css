@@ -17,12 +17,16 @@ body {
 #playlist ul {
 	margin: 5px 0 0 0;
 	padding: 0;
-	overflow: auto;
+	/* next three lines micro-clearfix: http://css-tricks.com/snippets/css/clear-fix/ */
+	content: "";
+  	display: table;
+  	clear: both;
 }
 
 #playlist li {
 	list-style-type: none;
-	width: 97px;
+	width: 95px;
+	height: 77px;
 	float:left;
 	margin: 10px 10px 0 0;
 }

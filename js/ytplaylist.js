@@ -54,7 +54,7 @@
     */
     var createTitle = function(json, selector) {
       var title = json.feed.title.$t;
-      $(selector).append('<h2>' + title + '</h2>');
+      $(selector).append('<h3>' + title + '</h3>');
     };
 	  
     /**
@@ -67,7 +67,6 @@
     */
     var parseList = function(json, selector) {
       var list = json.feed.entry;
-      console.log(list);
       $(list).each(function( index ) {
         var vidinfo = [];
         vidinfo.url = $(this)[0].link[0].href;
@@ -112,7 +111,7 @@
         var height = Math.round(vidinfo.height * difference);
       }
       var iframe = '<iframe width="' + width + '" height="' + height + '" src="http://www.youtube.com/embed/' + vid + '" frameborder="0" allowfullscreen></iframe>';
-      $(iframe).insertAfter($(selector).find('h2'));
+      $(iframe).insertAfter($(selector).find('h3'));
     };
     
     /**
