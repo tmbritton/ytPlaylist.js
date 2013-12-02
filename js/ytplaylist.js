@@ -110,7 +110,7 @@
         var difference = (1 - proportion);
         var height = Math.round(vidinfo.height * difference);
       }
-      var iframe = '<iframe width="' + width + '" height="' + height + '" src="http://www.youtube.com/embed/' + vid + '" frameborder="0" allowfullscreen></iframe>';
+      var iframe = '<iframe width="' + width + '" height="' + height + '" src="http://www.youtube.com/embed/' + vid + '" frameborder="0" rel="0" allowfullscreen></iframe>';
       $(iframe).insertAfter($(selector).find('h3'));
     };
     
