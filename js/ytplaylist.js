@@ -10,13 +10,13 @@
    	var request = 'https://gdata.youtube.com/feeds/api/playlists/' + settings.playlist + '?alt=json'
 
     /**
-    *  Get the JSON, kick off the program with the success callback.
-    *  
-    *  @param string request
-    *    YouTube API URL that gives us the JSON response.
-    *  @param string selector
-    *    Element in which to create playlist.  
-    */    
+     *  Get the JSON, kick off the program with the success callback.
+     *  
+     *  @param string request
+     *    YouTube API URL that gives us the JSON response.
+     *  @param string selector
+     *    Element in which to create playlist.  
+     */    
     var getJSON = function(request, selector) {
     	$.ajax({
   			url: request,
@@ -31,13 +31,13 @@
     };
 
     /**
-    *  Success callback for AJAX request. Calls functions that process returned JSON.
-    *  
-    *  @param object json
-    *    JSON object returned by YouTube API.
-    *  @param string selector
-    *    Element in which to create playlist.  
-    */
+     *  Success callback for AJAX request. Calls functions that process returned JSON.
+     *  
+     *  @param object json
+     *    JSON object returned by YouTube API.
+     *  @param string selector
+     *    Element in which to create playlist.  
+     */
     var successCallback = function(json, selector) {
     	createTitle(json, selector);
       parseList(json, selector);
@@ -45,26 +45,26 @@
     };
 
     /**
-    *  Create title and append it to playlist container element
-    *   
-    *  @param object json
-    *    JSON object returned by YouTube API.
-    *  @param string selector
-    *    Element in which to create playlist.  
-    */
+     *  Create title and append it to playlist container element
+     *   
+     *  @param object json
+     *    JSON object returned by YouTube API.
+     *  @param string selector
+     *    Element in which to create playlist.  
+     */
     var createTitle = function(json, selector) {
       var title = json.feed.title.$t;
       $(selector).append('<h3>' + title + '</h3>');
     };
 	  
     /**
-    *  Create iframe embed and list of videos from JSON
-    *   
-    *  @param object json
-    *    JSON object returned by YouTube API.
-    *  @param string selector
-    *    Element in which to create playlist.  
-    */
+     *  Create iframe embed and list of videos from JSON
+     *   
+     *  @param object json
+     *    JSON object returned by YouTube API.
+     *  @param string selector
+     *    Element in which to create playlist.  
+     */
     var parseList = function(json, selector) {
       var list = json.feed.entry;
       $(list).each(function( index ) {
@@ -88,13 +88,13 @@
     };
 
     /**
-    *  Create iframe embed and list of videos from JSON
-    *   
-    *  @param object vidinfo
-    *    Object of video info used in the embed
-    *  @param string selector
-    *    Element in which to embed iframe.  
-    */
+     *  Create iframe embed and list of videos from JSON
+     *   
+     *  @param object vidinfo
+     *    Object of video info used in the embed
+     *  @param string selector
+     *    Element in which to embed iframe.  
+     */
     var embedIframe = function(vidinfo, selector) {
       //Get rid of any existing iframes
       $(selector).children('iframe').remove();
@@ -115,11 +115,11 @@
     };
     
     /**
-    *  Add listeners for user interaction
-    *   
-    *  @param string selector
-    *    Element in which we embedded iframe.  
-    */
+     *  Add listeners for user interaction
+     *   
+     *  @param string selector
+     *    Element in which we embedded iframe.  
+     */
     var addListeners = function(selector) {
       $(selector).find('a').bind('click', function(){
         onClickCallback($(this), selector);
@@ -128,14 +128,14 @@
     }
 
     /**
-    *  Add listeners for user interaction
-    *   
-    *  @param object element
-    *    jQuery object of <a> element that was clicked. 
-    *
-    *  @param string selector
-    *    Element in which we embedded iframe.  
-    */
+     *  Add listeners for user interaction
+     *   
+     *  @param object element
+     *    jQuery object of <a> element that was clicked. 
+     *
+     *  @param string selector
+     *    Element in which we embedded iframe.  
+     */
     var onClickCallback = function(element, selector) {
       var vidinfo = []
       $(selector).find('img').removeClass('active');
